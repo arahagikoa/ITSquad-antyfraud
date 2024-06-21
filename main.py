@@ -2,40 +2,48 @@ import psycopg2
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 
-host = os.getenv('HOST')
-db_name = os.getenv('DB_NAME')
-port = os.getenv('PORT')
-login = os.getenv('LOGIN')
-password = os.getenv('PASSWORD')
+class Manager:
+    def __init__(self) -> None:
+        self.host = os.getenv('HOST')
+        self.db_name = os.getenv('DB_NAME')
+        self.port = os.getenv('PORT')
+        self.login = os.getenv('LOGIN')
+        self.password = os.getenv('PASSWORD')
+        self.conn = None
+        self.cursor=None
+
+    def get_conn(self)->None:
+        try:
+            self.conn = psycopg2.connect(database=self.db_name,
+                                    host=self.host,
+                                    user=self.login,
+                                    password=self.password,
+                                    port=self.port)
 
 
-try:
-    conn = psycopg2.connect(database=db_name,
-                            host=host,
-                            user=login,
-                            password=password,
-                            port=port)
+            print("Connection successful")
+            self.cursor = self.conn.cursor()
+
+            self.cursor.execute("SELECT * FROM _user")
+            rows = self.cursor.fetchall() 
+
+            
+            for row in rows:
+                print(row)
+
+        except Exception as error:
+            print(f"Error: {error}")
+
+    def close_conn(self)->None:
+        if self.conn:
+            self.cursor.close()
+            self.conn.close()
 
 
-    print("Connection successful")
-    cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM _user")
-    rows = cursor.fetchall() 
-
-    
-    for row in rows:
-        print(row)
-
-except Exception as error:
-    print(f"Error: {error}")
-
-
-finally:
-    if conn:
-        cursor.close()
-        conn.close()
+mng = Manager()
+mng.get_conn()
+mng.close_conn()
