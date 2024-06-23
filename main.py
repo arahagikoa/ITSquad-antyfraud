@@ -69,7 +69,7 @@ mng = Manager()
 
 csv_file = "./new_assets_data_csv.csv"
 
-'''
+
 user_columns = ['user_id', 'username', 'firstname', 'lastname', 'email', 'password', 'user_role_id']
 incident_columns = ['incident_id', 'incident_number', 'incydent_type', 'occurance_date', 'submission_date', 'incydent_status_id', 'user_id', 'last_modified']
 incident_history_columns = ['id', 'action', 'object_id', 'incident_id']
@@ -77,7 +77,7 @@ party_columns = ['party_id', 'first_name_party', 'middle_name_party', 'surname_p
 party_attribute_columns = ['id_attribute', 'value', 'party_id', 'party_extension_id']
 party_extension_columns =['id_extension', 'name']
 party_extension_mapping_columns = ['party_extension_maping_id', 'active_flag']
-'''
+
 
 
 asset_name_columns = ['name_asset']
@@ -95,14 +95,14 @@ reader.read_file_and_save("./party_attribute.txt", party_attribute_columns)
 reader.read_file_and_save("./party_extension.txt", party_extension_columns)
 reader.read_file_and_save("./party_extension_mapping.txt", party_extension_mapping_columns)
 '''
-
+'''
 reader.read_file_and_save("./asset.txt", asset_name_columns)
 reader.read_file_and_save("./asset_attribute.txt", asset_attribute_columns)
 reader.read_file_and_save("./system_asset_extension.txt", system_asset_extension_columns)
-
-
-
 '''
+query_file = "./query_file.txt"
+
+
 user_query = reader.create_batch_insert_statement("./user.txt", 'user_', user_columns)
 incident_query = reader.create_batch_insert_statement("./incident.txt", 'incident', incident_columns)
 incident_history_query = reader.create_batch_insert_statement("./incident_history.txt", 'incident_history', incident_history_columns)
@@ -110,7 +110,7 @@ party_query = reader.create_batch_insert_statement("./party.txt", 'party', party
 party_attribute_query = reader.create_batch_insert_statement("./party_attribute.txt", 'party_attribute', party_attribute_columns)
 party_extension_query = reader.create_batch_insert_statement("./party_extension.txt", 'party_extension', party_extension_columns)
 party_extension_mapping_query = reader.create_batch_insert_statement("./party_extension_mapping.txt", 'party_extension_mapping', party_extension_mapping_columns)
-
+'''
 print(user_query)
 print(incident_query)
 print(incident_history_query)
@@ -120,3 +120,18 @@ print(party_extension_mapping_query)
 print(party_extension_mapping_query)
 '''
 
+asset_query = reader.create_batch_insert_statement("./asset.txt", "asset", asset_name_columns)
+asset_attribute_query =reader.create_batch_insert_statement("./asset_attribute.txt", "asset_attribute", asset_attribute_columns)
+system_asset_extension_query =reader.create_batch_insert_statement("./system_asset_extension.txt", "system_asset_extension", system_asset_extension_columns)
+
+with open(query_file, 'w') as f:
+    f.write(user_query + "\n")
+    f.write(incident_query+ "\n")
+    f.write(incident_history_query+ "\n")
+    f.write(party_query+ "\n")
+    f.write(party_attribute_query+ "\n")
+    f.write(party_extension_mapping_query+ "\n")
+    f.write(party_extension_mapping_query+ "\n")
+    f.write(asset_query+ "\n")
+    f.write(asset_attribute_query+ "\n")
+    f.write(system_asset_extension_query+ "\n")
