@@ -63,8 +63,13 @@ class Manager:
 mng = Manager()
 #mng.get_conn()
 #mng.close_conn()
-csv_file = "./pron_gya_csv.csv"
 
+
+#csv_file = "./pron_gya_csv.csv"
+
+csv_file = "./new_assets_data_csv.csv"
+
+'''
 user_columns = ['user_id', 'username', 'firstname', 'lastname', 'email', 'password', 'user_role_id']
 incident_columns = ['incident_id', 'incident_number', 'incydent_type', 'occurance_date', 'submission_date', 'incydent_status_id', 'user_id', 'last_modified']
 incident_history_columns = ['id', 'action', 'object_id', 'incident_id']
@@ -72,16 +77,32 @@ party_columns = ['party_id', 'first_name_party', 'middle_name_party', 'surname_p
 party_attribute_columns = ['id_attribute', 'value', 'party_id', 'party_extension_id']
 party_extension_columns =['id_extension', 'name']
 party_extension_mapping_columns = ['party_extension_maping_id', 'active_flag']
+'''
+
+
+asset_name_columns = ['name_asset']
+asset_attribute_columns = ['asset_id_attribute', 'system_asset_extension_id', 'asset_attribute_value']
+system_asset_extension_columns = ['system_asset_extension_name']
+
+
 reader = Reader(csv_file)
+'''
+reader.read_file_and_save("./user_.txt", user_columns)
+reader.read_file_and_save("./incident.txt", incident_columns)
+reader.read_file_and_save("./incident_history.txt", incident_history_columns)
+reader.read_file_and_save("./party.txt", party_columns)
+reader.read_file_and_save("./party_attribute.txt", party_attribute_columns)
+reader.read_file_and_save("./party_extension.txt", party_extension_columns)
+reader.read_file_and_save("./party_extension_mapping.txt", party_extension_mapping_columns)
+'''
 
-#reader.read_file_and_save("./user_.txt", user_columns)
-#reader.read_file_and_save("./incident.txt", incident_columns)
-#reader.read_file_and_save("./incident_history.txt", incident_history_columns)
-#reader.read_file_and_save("./party.txt", party_columns)
-#reader.read_file_and_save("./party_attribute.txt", party_attribute_columns)
-#reader.read_file_and_save("./party_extension.txt", party_extension_columns)
-#reader.read_file_and_save("./party_extension_mapping.txt", party_extension_mapping_columns)
+reader.read_file_and_save("./asset.txt", asset_name_columns)
+reader.read_file_and_save("./asset_attribute.txt", asset_attribute_columns)
+reader.read_file_and_save("./system_asset_extension.txt", system_asset_extension_columns)
 
+
+
+'''
 user_query = reader.create_batch_insert_statement("./user.txt", 'user_', user_columns)
 incident_query = reader.create_batch_insert_statement("./incident.txt", 'incident', incident_columns)
 incident_history_query = reader.create_batch_insert_statement("./incident_history.txt", 'incident_history', incident_history_columns)
@@ -97,3 +118,5 @@ print(party_query)
 print(party_attribute_query)
 print(party_extension_mapping_query)
 print(party_extension_mapping_query)
+'''
+

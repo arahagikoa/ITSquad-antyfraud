@@ -42,9 +42,9 @@ class Reader:
         columns_data = df[expected_columns]
         try:
             with open(out_path, 'w') as file:
-                # Write SQL compatible data
+                
                 for index, row in columns_data.iterrows():
-                    # Format each row as SQL-compatible values
+                    
                     values = ', '.join(map(lambda x: f"'{x}'" if isinstance(x, str) else str(x), row.values))
                     file.write(f"({values}),\n")
             print(f"Data successfully saved to {out_path}")
