@@ -9,7 +9,7 @@ CNN (Convolutional Neural Network) - Kamil Krzemiński
 Pierwszym etapem jest przetworzenie dokumentu przez model, który służy do rozpoznawania obrazów dokumentów usystematyzowanych takich jak:
 Polskie i zagraniczne prawo jazdy
 Paszporty
--Dowody rejestracyjne
+-### Dowody rejestracyjne
 -Dowody osobiste
 -Tablice rejestracyjne
 Jeżeli model zwróci etykietę "Nieznane", rozwiązanie przechodzi do drugiego etapu.
@@ -28,7 +28,7 @@ Model zwraca klasyfikacje w postaci liczb całkowitych, które reprezentują prz
 -Ekspertyza - 2
 -Notatka policyjna - 0
 
-##Użytkowanie
+## Użytkowanie
 Wymagania wstępne
 Python 3.8 lub nowszy
 pytesseract
