@@ -32,6 +32,6 @@ OpenCV
 Instalacja
 Zainstalowanie pliku requirements.txt, jednak najprawdopodobniej rozwiązanie będzie w formie odpalonego środowiska Jupyter, więc wystarczy uruchomić komórkę instalacyjną.
 
-Autorzy
-Kamil Krzemiński - Model CNN
-Aleksander Majkowski - Model NLP
+## Autorzy
+- Kamil Krzemiński - Model CNN
+- Aleksander Majkowski - Model NLP
