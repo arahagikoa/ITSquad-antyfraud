@@ -6,16 +6,39 @@ Nasze rozwiązanie dzieli się na dwie główne części:
 Pierwszym etapem jest przetworzenie dokumentu przez model, który służy do rozpoznawania obrazów dokumentów usystematyzowanych takich jak:
 
 - Polskie i zagraniczne prawo jazdy
-- Paszporty
-- Dowody rejestracyjne
-- Dowody osobiste
-- Tablice rejestracyjne
+- Paszporty (rozdzelenie na polskie i zgraniaczne)
+- Dowody osobiste (rozdzelenie na polskie i zgraniaczne)
 
-Jeżeli model zwróci etykietę "Nieznane", rozwiązanie przechodzi do drugiego etapu.
+Jeżeli model zwróci etykietę "inne", rozwiązanie przechodzi do drugiego etapu.
+## Użyty model --- DiT-base
 
+Po researchu zdecydowałem się użyć modelu DiT-base (Document Image Transformer). Jest to model przetrenowany przez Microsoft, na datasecie składającym się z 42 milionów zdjęć dokumentów. Wybrałem ten model, ponieważ jest on stworzony w celu rozwiązywania zadań typu: klasyfikacja dokumentów, analizy rozmieszczenia elementów w dokumencie, renoma firmy Mocrosoft również zadziałał na korzyść tego rozwiązania :)
 ## Dokładny opis folderu CNN
 
-# Popisz się :)
+Całe rozwiązanie jest rozpiety na 3 folderach: dataset, model oraz test. Dodatkowo w celu uruchomienia i trenowania modeu potrzebujemy plików model-micr_dit-base-all.ipynb oraz predict.py. 
+
+### dataset
+tutaj znajduje się cały dataset użyty podczas trenowania oraz walidacji modelu. podfoldery train i validation są podzielone na foldery klasowe, w których znajdują się zdjęcia odpowiadające poszczególnym klasom.
+
+### model
+Znajdują się w nim kolejne 'edycje' modelu numerowane jako serie. Każdy z tych folderów jest osobnym, wytrenowanym na innych parametrach i różnych wariacjach datasecie. 
+W pliku results.txt znajdują się logi z osiągów poszczególnych serii modelu.
+
+### test
+jest to folder z zawierający foldery odpowiadające klasom, powstał by umożliwić szybkie przetestowanie modelu na zdjęciach których model jeszcze nie "widział".
+
+### model-micr_dit-base-all.ipynb
+
+Najważniejszy plik projektu. Służy on do rozpoczęcia treningu modelu.
+
+### predict.py
+Ten skrypt Pythona umożliwia przetestowanie modelu. Zmieniając ścieżkę pod zmienną model_dir możemy przełączać się między kolejnymi wersjami modelu. Uruchomienie pliku spowoduje wykonania predykcji przez model, oraz zwrócenie zdjęcia wsadowego wraz z przewidzianą przez model klasą. W celu zmiany zdjęcia, należy podmienić ścieżke pod zmienną pred_img. 
+
+### użycie modelu
+
+
+### Wymagania sprzętowe
+Poza środowiskiem Python na kompuetrze, który ma obsługiwać ten model należy zainstalować dodatkowe biblioteki, zostały one zebrane, włącznie z kompatybilnymi wersjami w pliku requirements.txt. 
 
 ## NLP (Natural Language Processing) - Aleksander Majkowski
 Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesseract), który odczytuje tekst. Następnie odczytany tekst jest przetwarzany przez przetrwnowany Duży Model Językowy (LLM) - Llama3 od MetaAI. Model służy do rozpoznania trzech rodzajów dokumentów:
