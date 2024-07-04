@@ -48,6 +48,9 @@ Folder Training_model sklada się z 2 folderów:
 
 Trenowanie modelu wymaga środowiska z pamięcią systemową RAM w okolicach 30 GB oraz minimum 12 GB na GPU
 
+## Backend
+
+Folder Backend będzie zawierał Backend :)
 
 ## Użytkowanie
 Wymagania wstępne:
