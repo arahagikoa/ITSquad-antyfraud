@@ -36,9 +36,21 @@ Ten skrypt Pythona umożliwia przetestowanie modelu. Zmieniając ścieżkę pod 
 
 ### użycie modelu
 
+By użyć już wytrenowanego modelu należy:
+
+-- wybrać serie modelu do uzycia z folderu model
+-- podać ścieżkę do modelu w pliku predict.py w model_dir
+-- podać ścieżkę do zdjęcia, które chcemy zaklasyfikować pod zmienną: pred_img
+-- (opcjonalnie) podać prawidłowy label pod zmienną: true_label
+-- uruchomić plik predict.py 
+-- po krótkiej chwili wyświetli się, użyte zdjęcie wraz z przewidywaniem modelu
 
 ### Wymagania sprzętowe
-Poza środowiskiem Python na kompuetrze, który ma obsługiwać ten model należy zainstalować dodatkowe biblioteki, zostały one zebrane, włącznie z kompatybilnymi wersjami w pliku requirements.txt. 
+Poza środowiskiem Python na kompuetrze,  należy zainstalować dodatkowe biblioteki, zostały one zebrane, włącznie z kompatybilnymi wersjami, w pliku requirements.txt. Ptrzetrenowany model wymaga około 20 GB przestrzeni dyskowej na komputerze użytkownika.
+
+### Licencje
+
+Wszystkie użyte biblioteki jak i sam model jest na licencji wspierającej komercyjny użytek :)
 
 ## NLP (Natural Language Processing) - Aleksander Majkowski
 Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesseract), który odczytuje tekst. Następnie odczytany tekst jest przetwarzany przez przetrwnowany Duży Model Językowy (LLM) - Llama3 od MetaAI. Model służy do rozpoznania trzech rodzajów dokumentów:
