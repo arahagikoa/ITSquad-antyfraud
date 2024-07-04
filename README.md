@@ -11,6 +11,8 @@ Pierwszym etapem jest przetworzenie dokumentu przez model, który służy do roz
 - Dowody osobiste
 - Tablice rejestracyjne
 
+## Dokładny opis folderu CNN
+
 Jeżeli model zwróci etykietę "Nieznane", rozwiązanie przechodzi do drugiego etapu.
 
 ## NLP (Natural Language Processing) - Aleksander Majkowski
@@ -28,6 +30,19 @@ Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesser
 | Oświadczenie kolizyjne   | 1            |
 | Ekspertyza likwidatora   | 2            |
 | Nieznany                 | 3            |
+
+## Dokładny opis folderu NLP
+
+Folder NLP składa się z 2 głownych folderów:
+- Database_creation
+- Training_model
+
+Folder Database_creation zawieraja pliki służące do tworzenia treningowej bazy danych (Klucze api w plikach są niepoprawne z oczywistych względów). Plik LLama3_finetuning_db.json zawiera baze danych treningowych dla modelu Llama3 wygenerowaną przez AI na podstawie promptów w pozostałych plikach
+
+Folder Training_model sklada się z 3 folderów:
+- Saved_model który zawiera pliki konfiguracyjne przetrenowanego modelu
+- sentiment_classification
+
 
 ## Użytkowanie
 Wymagania wstępne
