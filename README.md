@@ -15,6 +15,8 @@ Jeżeli model zwróci etykietę "Nieznane", rozwiązanie przechodzi do drugiego 
 
 ## Dokładny opis folderu CNN
 
+# Popisz się :)
+
 ## NLP (Natural Language Processing) - Aleksander Majkowski
 Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesseract), który odczytuje tekst. Następnie odczytany tekst jest przetwarzany przez przetrwnowany Duży Model Językowy (LLM) - Llama3 od MetaAI. Model służy do rozpoznania trzech rodzajów dokumentów:
 
