@@ -39,7 +39,8 @@ Folder NLP składa się z 2 głownych folderów:
 - Database_creation
 - Training_model
 
-Folder Database_creation zawiera pliki służące do tworzenia treningowej bazy danych (Klucze api w plikach są niepoprawne z oczywistych względów). Plik LLama3_finetuning_db.json zawiera baze danych treningowych dla modelu Llama3 wygenerowaną przez AI na podstawie promptów w pozostałych plikach
+Folder Database_creation zawiera pliki służące do tworzenia treningowej bazy danych (Klucze api w plikach są niepoprawne z oczywistych względów). 
+- Plik LLama3_finetuning_db.json zawiera baze danych treningowych dla modelu Llama3 wygenerowaną przez AI na podstawie promptów w pozostałych plikach
 
 Folder Training_model sklada się z 2 folderów:
 - Saved_model - zawiera pliki konfiguracyjne przetrenowanego modelu. Używamy tego pliku do załadowania modelu w model_testing.ipynb
