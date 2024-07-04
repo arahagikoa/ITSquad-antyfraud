@@ -5,7 +5,7 @@ Nasze rozwiązanie dzieli się na dwie główne części:
 ## CNN (Convolutional Neural Network) - Kamil Krzemiński
 Pierwszym etapem jest przetworzenie dokumentu przez model, który służy do rozpoznawania obrazów dokumentów usystematyzowanych takich jak:
 
-Polskie i zagraniczne prawo jazdy
+- Polskie i zagraniczne prawo jazdy
 - Paszporty
 - Dowody rejestracyjne
 - Dowody osobiste
