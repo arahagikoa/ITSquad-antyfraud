@@ -20,10 +20,10 @@ Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesser
 - Ekspertyza likwidatora
 Może również zwrócić etykietę "Nieznane", jeśli dokument nie pasuje do żadnego z rozpoznawanych typów. Model zwraca klasyfikacje w postaci liczb całkowitych, które reprezentują przewidywane klasy dokumentów:
 
-- Nieznany - 3
+- Notatka policyjna - 0
 - Oświadczenie kolizyjne - 1
 - Ekspertyza - 2
-- Notatka policyjna - 0
+- Nieznany - 3
 ## Użytkowanie
 Wymagania wstępne
 Python 3.8 lub nowszy
