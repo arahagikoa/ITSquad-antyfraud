@@ -6,18 +6,18 @@ Nasze rozwiązanie dzieli się na dwie główne części:
 Pierwszym etapem jest przetworzenie dokumentu przez model, który służy do rozpoznawania obrazów dokumentów usystematyzowanych takich jak:
 
 Polskie i zagraniczne prawo jazdy
-Paszporty
-Dowody rejestracyjne
-Dowody osobiste
-Tablice rejestracyjne
+- Paszporty
+- Dowody rejestracyjne
+- Dowody osobiste
+- Tablice rejestracyjne
 Jeżeli model zwróci etykietę "Nieznane", rozwiązanie przechodzi do drugiego etapu.
 
 ## NLP (Natural Language Processing) - Aleksander Majkowski
 Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesseract), który odczytuje tekst. Następnie odczytany tekst jest przetwarzany przez Duży Model Językowy (LLM) - Llama3 od MetaAI. Model służy do rozpoznania trzech rodzajów dokumentów:
 
-Oświadczenie kolizji
-Notatka policyjna
-Ekspertyza likwidatora
+- Oświadczenie kolizji
+- Notatka policyjna
+- Ekspertyza likwidatora
 Może również zwrócić etykietę "Nieznane", jeśli dokument nie pasuje do żadnego z rozpoznawanych typów. Model zwraca klasyfikacje w postaci liczb całkowitych, które reprezentują przewidywane klasy dokumentów:
 
 Nieznany - 3
