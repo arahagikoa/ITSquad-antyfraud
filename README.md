@@ -14,7 +14,7 @@ Pierwszym etapem jest przetworzenie dokumentu przez model, który służy do roz
 Jeżeli model zwróci etykietę "Nieznane", rozwiązanie przechodzi do drugiego etapu.
 
 ## NLP (Natural Language Processing) - Aleksander Majkowski
-Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesseract), który odczytuje tekst. Następnie odczytany tekst jest przetwarzany przez Duży Model Językowy (LLM) - Llama3 od MetaAI. Model służy do rozpoznania trzech rodzajów dokumentów:
+Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesseract), który odczytuje tekst. Następnie odczytany tekst jest przetwarzany przez przetrwnowany Duży Model Językowy (LLM) - Llama3 od MetaAI. Model służy do rozpoznania trzech rodzajów dokumentów:
 
 - Oświadczenie kolizji
 - Notatka policyjna
