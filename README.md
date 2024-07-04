@@ -34,7 +34,7 @@ Najważniejszy plik projektu. Służy on do rozpoczęcia treningu modelu.
 ### predict.py
 Ten skrypt Pythona umożliwia przetestowanie modelu. Zmieniając ścieżkę pod zmienną model_dir możemy przełączać się między kolejnymi wersjami modelu. Uruchomienie pliku spowoduje wykonania predykcji przez model, oraz zwrócenie zdjęcia wsadowego wraz z przewidzianą przez model klasą. W celu zmiany zdjęcia, należy podmienić ścieżke pod zmienną pred_img. 
 
-### użycie modelu
+## użycie modelu
 
 By użyć już wytrenowanego modelu należy:
 
@@ -45,12 +45,13 @@ By użyć już wytrenowanego modelu należy:
 -- uruchomić plik predict.py 
 -- po krótkiej chwili wyświetli się, użyte zdjęcie wraz z przewidywaniem modelu
 
-### Wymagania sprzętowe
-Poza środowiskiem Python na kompuetrze,  należy zainstalować dodatkowe biblioteki, zostały one zebrane, włącznie z kompatybilnymi wersjami, w pliku requirements.txt. Ptrzetrenowany model wymaga około 20 GB przestrzeni dyskowej na komputerze użytkownika.
+## Wymagania sprzętowe
+Poza środowiskiem Python na kompuetrze, należy zainstalować dodatkowe biblioteki, zostały one zebrane, włącznie z kompatybilnymi wersjami, w pliku requirements.txt. Ptrzetrenowany model wymaga około 20 GB przestrzeni dyskowej na komputerze użytkownika.
 
-### Licencje
+## Licencje
 
 Wszystkie użyte biblioteki jak i sam model jest na licencji wspierającej komercyjny użytek :)
+
 
 ## NLP (Natural Language Processing) - Aleksander Majkowski
 Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesseract), który odczytuje tekst. Następnie odczytany tekst jest przetwarzany przez przetrwnowany Duży Model Językowy (LLM) - Llama3 od MetaAI. Model służy do rozpoznania trzech rodzajów dokumentów:
