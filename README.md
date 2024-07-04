@@ -18,7 +18,8 @@ Zdjęcie nierozpoznanego dokumentu jest przekazywane do OCR (używając pytesser
 - Oświadczenie kolizji
 - Notatka policyjna
 - Ekspertyza likwidatora
-Może również zwrócić etykietę "Nieznane", jeśli dokument nie pasuje do żadnego z rozpoznawanych typów. Model zwraca klasyfikacje w postaci liczb całkowitych, które reprezentują przewidywane klasy dokumentów:
+  
+  Może również zwrócić etykietę "Nieznane", jeśli dokument nie pasuje do żadnego z rozpoznawanych typów. Model zwraca klasyfikacje w postaci liczb całkowitych, które reprezentują przewidywane klasy dokumentów:
 
 - Notatka policyjna - 0
 - Oświadczenie kolizyjne - 1
