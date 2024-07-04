@@ -50,12 +50,11 @@ Trenowanie modelu wymaga środowiska z pamięcią systemową RAM w okolicach 30 
 
 
 ## Użytkowanie
-Wymagania wstępne
-Python 3.8 lub nowszy
-pytesseract
-OpenCV
-Instalacja
-Zainstalowanie pliku requirements.txt, jednak najprawdopodobniej rozwiązanie będzie w formie odpalonego środowiska Jupyter, więc wystarczy uruchomić komórkę instalacyjną.
+Wymagania wstępne:
+- Python 3.8 lub nowszy
+- pytesseract
+- OpenCV
+- Zainstalowanie pliku requirements.txt, jednak najprawdopodobniej rozwiązanie będzie w formie odpalonego środowiska Jupyter, więc wystarczy uruchomić komórkę instalacyjną.
 
 ## Autorzy
 - Kamil Krzemiński - Model CNN
