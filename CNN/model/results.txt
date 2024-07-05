@@ -1,0 +1,283 @@
+ I
+ 
+ epoch                    =       6.74
+  train_loss               =     1.4774
+  train_runtime            = 0:01:07.31
+  train_samples_per_second =     11.052
+  train_steps_per_second   =      0.475
+
+  loss_fct = nn.CrossEntropyLoss(weight=torch.tensor(
+            [
+                1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0
+            ], 
+
+
+Model nie radzi sobie z polskimi dokumentami, rozpoznaje zagraniczne na oko w 60%, inne dokumenty klasyfikuje bezbłędnie, prawo jazdy obce również rozpoznaje ponadprzeciętnie dobrze
+
+II 
+
+NUM_OF_EPOCHS = 10
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+epoch                    =        8.7
+  train_loss               =     1.4618
+  train_runtime            = 0:01:26.10
+  train_samples_per_second =     10.685
+  train_steps_per_second   =      0.581
+
+Model sprawuje się podobnie, troche częściej rozpoznaje paszport 
+'
+III
+zebrałem jeszcze więcej danych 
+NUM_OF_EPOCHS = 10
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 11
+
+brak komentarza
+
+IV 
+
+NUM_OF_EPOCHS = 22
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 5
+
+epoch                    =      19.13
+  train_loss               =     1.3015
+  train_runtime            = 0:03:27.38
+  train_samples_per_second =     11.775
+  train_steps_per_second   =       0.53
+
+
+widać znaczącą poprawe, model rozróżnia inne wzorow, prawo jazdy obce oraz paszport obcy podobnie. Myli się przy dowodach osobistych i polskim prawie jazdy
+
+V
+NUM_OF_EPOCHS = 21
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 5
+
+epoch                    =       20.0
+  train_loss               =     1.2679
+  train_runtime            = 0:04:05.82
+  train_samples_per_second =      8.799
+  train_steps_per_second   =      0.427
+
+dobrze: inne, paszport obcy, prawo jazdy
+
+VI
+
+
+NUM_OF_EPOCHS = 22
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+ epoch                    =      19.13
+  train_loss               =     1.2529
+  train_runtime            = 0:03:24.44
+  train_samples_per_second =      9.577
+  train_steps_per_second   =      0.538
+
+VII
+
+
+    epoch                    =      19.13
+  train_loss               =     1.3644
+  train_runtime            = 0:03:09.97
+  train_samples_per_second =     10.306
+  train_steps_per_second   =      0.579
+  
+NUM_OF_EPOCHS = 22
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+źle id, idobcy, prawo jazdy obce
+
+VIII
+
+epoch                    =      15.65
+  train_loss               =     1.5129
+  train_runtime            = 0:02:59.76
+  train_samples_per_second =      8.912
+  train_steps_per_second   =      0.501
+
+  NUM_OF_EPOCHS = 18
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+
+X
+
+  NUM_OF_EPOCHS = 24
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+epoch                    =      20.87
+  train_loss               =     1.4421
+  train_runtime            = 0:03:53.73
+  train_samples_per_second =      9.139
+  train_steps_per_second   =      0.513
+
+XI
+
+NUM_OF_EPOCHS = 22
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 5
+
+ epoch                    =      19.56
+  train_loss               =     1.3704
+  train_runtime            = 0:03:42.87
+  train_samples_per_second =      8.785
+  train_steps_per_second   =      0.395
+
+XII 
+NUM_OF_EPOCHS = 22
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 3
+
+epoch                    =      20.53
+  train_loss               =     1.3502
+  train_runtime            = 0:03:36.84
+  train_samples_per_second =       9.03
+  train_steps_per_second   =       0.71
+
+XIII
+
+    NUM_OF_EPOCHS = 22
+    LEARNING_RATE = 5e-5
+
+    BATCH_SIZE = 4
+
+    epoch                    =      19.13
+    train_loss               =     1.3543
+    train_runtime            = 0:03:59.02
+    train_samples_per_second =      8.192
+    train_steps_per_second   =       0.46
+
+XIV
+
+  NUM_OF_EPOCHS = 22
+    LEARNING_RATE = 5e-5
+
+    BATCH_SIZE = 4
+    epoch                    =      19.13
+  train_loss               =     1.4685
+  train_runtime            = 0:03:39.07
+  train_samples_per_second =      8.938
+  train_steps_per_second   =      0.502
+
+  dobrze: paszport, paszport obcy, prawo jazdy obce, inne -- 57%
+
+
+  XV
+
+   epoch                    =      19.13
+  train_loss               =     1.6286
+  train_runtime            = 0:03:44.83
+  train_samples_per_second =      8.709
+  train_steps_per_second   =      0.489
+
+
+
+XVI
+
+
+EPOCH = 24
+batch_size 4
+
+epoch                    =     23.2727
+  total_flos               = 216761559GF
+  train_loss               =      1.2996
+  train_runtime            =  0:29:37.13
+  train_samples_per_second =       1.742
+  train_steps_per_second   =       0.108
+
+
+XVII
+
+
+EPOCH = 24
+batch_size 4
+epoch                    =     23.2727
+  total_flos               = 220081916GF
+  train_loss               =      1.3048
+  train_runtime            =  0:30:18.27
+  train_samples_per_second =       1.729
+  train_steps_per_second   =       0.106
+
+źle: prawo jazdy obce, paszport polski
+
+
+XVIII
+
+NUM_OF_EPOCHS = 22
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+epoch                    =      20.71
+  train_loss               =     1.3183
+  train_runtime            = 0:04:16.81
+  train_samples_per_second =     11.565
+  train_steps_per_second   =      0.685
+
+
+XX 
+
+NUM_OF_EPOCHS = 24
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+{'eval_loss': 0.4770812392234802, 'eval_accuracy': 0.875, 'eval_Weighted F1': 0.8741883116883117, 'eval_Micro F1': 0.875, 'eval_Macro F1': 0.8713667285095855, 'eval_Weighted Recall': 0.875, 'eval_Micro Recall': 0.875, 'eval_Macro Recall': 0.8714285714285713, 'eval_Weighted Precision': 0.8848958333333333, 'eval_Micro Precision': 0.875, 'eval_Macro Precision': 0.8833333333333332, 'eval_runtime': 6.0099, 'eval_samples_per_second': 5.325, 'eval_steps_per_second': 1.331, 'epoch': 23.35}
+{'train_runtime': 261.8872, 'train_samples_per_second': 13.288, 'train_steps_per_second': 0.825, 'train_loss': 1.2678406680071796, 'epoch': 23.35}
+***** train metrics *****
+  epoch                    =      23.35
+  train_loss               =     1.2678
+  train_runtime            = 0:04:21.88
+  train_samples_per_second =     13.288
+  train_steps_per_second   =      0.825
+
+  XX
+
+NUM_OF_EPOCHS = 26
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+  {'eval_loss': 0.4839061498641968, 'eval_accuracy': 0.8125, 'eval_Weighted F1': 0.8067574786324787, 'eval_Micro F1': 0.8125, 'eval_Macro F1': 0.8064713064713064, 'eval_Weighted Recall': 0.8125, 'eval_Micro Recall': 0.8125, 'eval_Macro Recall': 0.807142857142857, 'eval_Weighted Precision': 0.8395089285714287, 'eval_Micro Precision': 0.8125, 'eval_Macro Precision': 0.8459183673469388, 'eval_runtime': 6.3243, 'eval_samples_per_second': 5.06, 'eval_steps_per_second': 1.265, 'epoch': 25.3}
+{'train_runtime': 303.646, 'train_samples_per_second': 12.416, 'train_steps_per_second': 0.771, 'train_loss': 1.2332121383430612, 'epoch': 25.3}
+***** train metrics *****
+  epoch                    =       25.3
+  train_loss               =     1.2332
+  train_runtime            = 0:05:03.64
+  train_samples_per_second =     12.416
+  train_steps_per_second   =      0.771
+
+
+
+XXI
+
+NUM_OF_EPOCHS = 24
+LEARNING_RATE = 5e-5
+
+BATCH_SIZE = 4
+
+
+{'eval_loss': 0.5491147637367249, 'eval_accuracy': 0.875, 'eval_Weighted F1': 0.875, 'eval_Micro F1': 0.875, 'eval_Macro F1': 0.8787878787878788, 'eval_Weighted Recall': 0.875, 'eval_Micro Recall': 0.875, 'eval_Macro Recall': 0.8833333333333334, 'eval_Weighted Precision': 0.8848958333333334, 'eval_Micro Precision': 0.875, 'eval_Macro Precision': 0.8833333333333334, 'eval_runtime': 5.9195, 'eval_samples_per_second': 5.406, 'eval_steps_per_second': 1.351, 'epoch': 23.35}
+{'train_runtime': 298.3884, 'train_samples_per_second': 11.663, 'train_steps_per_second': 0.724, 'train_loss': 1.3039750765871119, 'epoch': 23.35}
+***** train metrics *****
+  epoch                    =      23.35
+  train_loss               =      1.304
+  train_runtime            = 0:04:58.38
+  train_samples_per_second =     11.663
+  train_steps_per_second   =      0.724
