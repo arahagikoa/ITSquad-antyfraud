@@ -45,6 +45,8 @@ def extract_text_from_images(image_paths):
 
     return extracted_text
 
+
+# This part of code is only 
 input_dir = r"C:\Users\olekm\OneDrive\Pulpit\ICFraud_github\ITSquad-antyfraud\CNN\dataset\train\paszportObcy"
 
 if os.path.exists(input_dir):
