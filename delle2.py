@@ -5,7 +5,7 @@ from PIL import Image
 
 
 openai.api_base = "https://arahagikoa.openai.azure.com/"
-openai.api_key = "6ffbc6072d9e4853bfd085bf4c09d435"   
+
 openai.api_version = '2023-06-01-preview'
 openai.api_type = 'azure'
 
