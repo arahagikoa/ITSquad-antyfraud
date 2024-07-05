@@ -5,8 +5,7 @@ from PIL import Image
 import json
 
 client = AzureOpenAI(
-    api_version="2024-02-01",  
-    api_key="6ffbc6072d9e4853bfd085bf4c09d435",  
+    
     azure_endpoint="https://arahagikoa.openai.azure.com/"
 )
 
