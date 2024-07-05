@@ -29,9 +29,9 @@ def extract_text_from_images(image_paths):
     images = [Image.open(path) for path in image_paths]
     language = detect_language(images)
     extracted_text = []
+    
     for image in images:
         try:
-            # Perform OCR on each image
             text = pytesseract.image_to_string(image, lang=language)
             extracted_text.append(text)
         except pytesseract.TesseractError as e:
@@ -42,9 +42,9 @@ def extract_text_from_images(image_paths):
             except pytesseract.TesseractError as fallback_e:
                 print(f"Failed to process image even with fallback language: {fallback_e}")
                 extracted_text.append('')  # Add an empty string for failed OCR attempts
+
     return extracted_text
 
-# Example usage with image file paths
 input_dir = r"C:\Users\olekm\OneDrive\Pulpit\ICFraud_github\ITSquad-antyfraud\CNN\dataset\train\paszportObcy"
 
 if os.path.exists(input_dir):
@@ -55,8 +55,14 @@ else:
 
 texts = []
 
-for item in image_paths:
-    text = extract_text_from_images([item])
+for image_path in image_paths:
+    text = extract_text_from_images([image_path])  # Pass as a list
+    if isinstance(text, list):
+        text = "\n".join(text)
     texts.append(text)
 
 print(texts)
+
+with open("file.txt", "w", encoding='UTF-8') as file:
+    to_write = "\n".join(texts)
+    file.write(to_write)
