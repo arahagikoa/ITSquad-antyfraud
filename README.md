@@ -35,9 +35,9 @@ Najważniejszy plik projektu. Służy on do rozpoczęcia treningu modelu.
 Ten skrypt Pythona umożliwia przetestowanie modelu. Zmieniając ścieżkę pod zmienną model_dir możemy przełączać się między kolejnymi wersjami modelu. Uruchomienie pliku spowoduje wykonania predykcji przez model, oraz zwrócenie zdjęcia wsadowego wraz z przewidzianą przez model klasą. W celu zmiany zdjęcia, należy podmienić ścieżke pod zmienną pred_img. 
 
 ## użycie modelu
-UWAGA z powodu zbyt dużego rozmiaru model nie może być przechowywany na githubie, zamieszcze tutaj link do pobrania modelu lokalnie
-By użyć już wytrenowanego modelu należy:
 
+By użyć już wytrenowanego modelu należy:
+- wypakować plik z rozszerzeniem .zip w folderze model i umieścić go w tym samym folderze, nie zmieniając nazwy
 - wybrać serie modelu do uzycia z folderu model
 - podać ścieżkę do modelu w pliku predict.py w model_dir
 - podać ścieżkę do zdjęcia, które chcemy zaklasyfikować pod zmienną: pred_img
