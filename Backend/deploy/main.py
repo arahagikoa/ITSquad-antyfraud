@@ -4,7 +4,7 @@ from flask_cors import CORS
 import json
 import os
 import shutil
-
+import uuid
 app = Flask(__name__)
 CORS(app, resources={
     "/*": {"origins": ["*"]}
@@ -22,13 +22,19 @@ model.login_hg()
 model.initialize_nlp()
 model.initialize_cnn()
 
-@app.route('/API/predict', methods=['GET'])
+@app.route('/API/predict', methods=['POST'])
 def predict():
     try:
-        data = request.json
-        images = data.get('images')
+        images_dir = f'uploaded_images_{uuid.uuid4()}'
+        os.makedirs(images_dir, exist_ok=True)
+
+        files = request.files.getlist('images')
+        for file in files:
+            file.save(os.path.join(images_dir, file.filename))
         
-        predicted_labels = model.main_function(images)
+        predicted_labels = MODEL.main_function(images_dir)
+        shutil.rmtree(images_dir)
+
         if predicted_labels is not None:
             return jsonify({"message": "succesfully predicted labels for given images", "labels": predicted_labels}), 200
         else:

@@ -87,7 +87,7 @@ class MODEL:
 
                 document_labels.append({predicted_class_name: path})
             
-            except Exception as e:  
+            except Exception as e:
                 print(f"Error processing {path}: {e}")
         
         return document_labels
