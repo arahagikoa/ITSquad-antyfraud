@@ -2,11 +2,13 @@ import torch
 from huggingface_hub import login
 import os
 import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoFeatureExtractor, AutoModelForImageClassification, LlamaForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoFeatureExtractor, AutoModelForImageClassification, LlamaForSequenceClassification, BitsAndBytesConfig
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from PIL import Image
 from pdf_ocr import extract_text_from_images
+from peft import PeftModel, PeftConfig
+
 
 
 
@@ -21,24 +23,36 @@ class MODEL:
         self.nlp_tokenizer = None
         self.nlp_model = None
         self.list_text_class = None
+        self.tokenizer = None
 
     def login_hg(self)->None:
         login(self.hg_login)
 
     def initialize_nlp(self)->None:
-        tokenizer = AutoTokenizer.from_pretrained(self.NLP_MODEL_DIR)
-        self.tokenizer_nlp = tokenizer
-        # Load model with memory optimizations
-        nlp_model = LlamaForSequenceClassification.from_pretrained(
-            self.NLP_MODEL_DIR,
-            num_labels=4,
-            #device_map="auto",
-            #load_in_8bit=True,
-            torch_dtype=torch.float16,
-            low_cpu_mem_usage=True,
-            offload_folder="offload",
-            offload_state_dict=True
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16
         )
+        peft_config = PeftConfig.from_pretrained(self.NLP_MODEL_DIR)
+
+        nlp_model = AutoModelForSequenceClassification.from_pretrained(
+            peft_config.base_model_name_or_path,
+            num_labels=4,
+            quantization_config=bnb_config,
+            device_map="auto"
+        )
+
+        tokenizer = AutoTokenizer.from_pretrained(peft_config.base_model_name_or_path)
+
+        # Set the padding token
+        tokenizer.pad_token = tokenizer.eos_token
+        nlp_model.config.pad_token_id = tokenizer.eos_token_id
+
+        self.tokenizer = tokenizer
+
+        nlp_model = PeftModel.from_pretrained(nlp_model, self.NLP_MODEL_DIR)
 
         nlp_model.eval()
 
@@ -73,33 +87,27 @@ class MODEL:
 
                 document_labels.append({predicted_class_name: path})
             
-            except Exception as e:  
+            except Exception as e:
                 print(f"Error processing {path}: {e}")
         
         return document_labels
 
 
     def predict_sentiment(self, text)->int:
-        # Force CPU usage
-        device = torch.device("balanced")
-        self.nlp_model.to(device)
+        
+        inputs = self.tokenizer(text, return_tensors="pt", truncation=True, max_length=512, padding=True)
+        
+        inputs = {k: v.to(self.nlp_model.device) for k, v in inputs.items()}
 
-        # Tokenize the input text
-        inputs = self.nlp_tokenizer(text, return_tensors="pt", truncation=True, max_length=512 ,padding=True)
-        inputs = {k: v.to(device) for k, v in inputs.items()}
-
-        # Make predictions
         with torch.no_grad():
             outputs = self.nlp_model(**inputs)
             logits = outputs.logits
 
-        # Get the predicted class
         predicted_class_id = logits.argmax().item()
 
         return predicted_class_id
 
-
-    def nlp_model_function(self, images_dir):
+    def nlp_model_function(self, images_dir)->list:
         document_labels = self.cnn_model_function(images_dir)
         print(document_labels)
         
