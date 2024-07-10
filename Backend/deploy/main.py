@@ -5,43 +5,44 @@ import json
 import os
 import shutil
 import uuid
+from werkzeug.utils import secure_filename
 app = Flask(__name__)
 CORS(app, resources={
     "/*": {"origins": ["*"]}
     })
 
 
-nlp_model_dir = "/saved_model"
-cnn_model_dir = "/CNN_MODEL"
+nlp_model_dir = r"C:\Users\olekm\OneDrive\Pulpit\ICFraud_github\ITSquad-antyfraud\Backend\saved_model"
+cnn_model_dir = r"C:\Users\olekm\OneDrive\Pulpit\ICFraud_github\ITSquad-antyfraud\Backend\CNN_MODEL"
 
 
 model = MODEL(nlp_model_dir, cnn_model_dir)
 
 
-model.login_hg()
-model.initialize_nlp()
-model.initialize_cnn()
-
 @app.route('/API/predict', methods=['POST'])
 def predict():
     try:
-        images_dir = f'uploaded_images_{uuid.uuid4()}'
+        unique_dir = f'uploaded_images_{uuid.uuid4()}'
+        images_dir = os.path.join(os.getcwd(), unique_dir)
         os.makedirs(images_dir, exist_ok=True)
 
         files = request.files.getlist('images')
         for file in files:
-            file.save(os.path.join(images_dir, file.filename))
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(images_dir, filename)
+            file.save(file_path)
         
-        predicted_labels = MODEL.main_function(images_dir)
+        predicted_labels = model.main_function(images_dir)
+        
         shutil.rmtree(images_dir)
 
         if predicted_labels is not None:
-            return jsonify({"message": "succesfully predicted labels for given images", "labels": predicted_labels}), 200
+            return jsonify({"message": "Successfully predicted labels for given images", "labels": predicted_labels}), 200
         else:
-            return jsonify({"error": "error during model prediction, please try again"}), 500
+            return jsonify({"error": "Error during model prediction, please try again"}), 500
     except Exception as e:
         print(f"Error: {e}")
-        return jsonify({"error": "Error during model prediction"}), 500
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/API/get_records', methods = ['GET'])
 def get_records():
@@ -55,4 +56,4 @@ def get_records():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=False, port=5000) #Changed debug mode

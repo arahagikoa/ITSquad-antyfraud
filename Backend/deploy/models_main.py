@@ -25,38 +25,69 @@ class MODEL:
         self.list_text_class = None
         self.tokenizer = None
 
+        self.login_hg()
+        self.initialize_nlp()
+        self.initialize_cnn()
+
     def login_hg(self)->None:
         login(self.hg_login)
 
     def initialize_nlp(self)->None:
-        bnb_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_use_double_quant=True,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=torch.bfloat16
-        )
-        peft_config = PeftConfig.from_pretrained(self.NLP_MODEL_DIR)
+        if os.name =='nt':
+            local_path = r"C:\Users\olekm\OneDrive\Pulpit\ICFraud_github\ITSquad-antyfraud\NLP\Training_model\saved_model"
 
-        nlp_model = AutoModelForSequenceClassification.from_pretrained(
-            peft_config.base_model_name_or_path,
-            num_labels=4,
-            quantization_config=bnb_config,
-            device_map="auto"
-        )
+            peft_config = PeftConfig.from_pretrained(local_path)
 
-        tokenizer = AutoTokenizer.from_pretrained(peft_config.base_model_name_or_path)
+            base_model = AutoModelForSequenceClassification.from_pretrained(
+                peft_config.base_model_name_or_path,
+                num_labels=4,
+                torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+                device_map="auto" if torch.cuda.is_available() else None
+            )
 
-        # Set the padding token
-        tokenizer.pad_token = tokenizer.eos_token
-        nlp_model.config.pad_token_id = tokenizer.eos_token_id
+            tokenizer = AutoTokenizer.from_pretrained(peft_config.base_model_name_or_path)
 
-        self.tokenizer = tokenizer
+            # Set the padding token
+            tokenizer.pad_token = tokenizer.eos_token
+            base_model.config.pad_token_id = tokenizer.eos_token_id
 
-        nlp_model = PeftModel.from_pretrained(nlp_model, self.NLP_MODEL_DIR)
+            nlp_model = PeftModel.from_pretrained(base_model, local_path)
+            nlp_model.eval()
 
-        nlp_model.eval()
+            self.nlp_model = nlp_model
+            self.tokenizer = tokenizer
+        
+        else:
+            bnb_config = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.bfloat16
+            )
+            peft_config = PeftConfig.from_pretrained(self.NLP_MODEL_DIR)
 
-        self.nlp_model = nlp_model
+            nlp_model = AutoModelForSequenceClassification.from_pretrained(
+                peft_config.base_model_name_or_path,
+                num_labels=4,
+                quantization_config=bnb_config,
+                device_map="auto"
+            )
+
+            tokenizer = AutoTokenizer.from_pretrained(peft_config.base_model_name_or_path)
+
+            # Set the padding token
+            tokenizer.pad_token = tokenizer.eos_token
+            nlp_model.config.pad_token_id = tokenizer.eos_token_id
+
+            self.tokenizer = tokenizer
+
+            nlp_model = PeftModel.from_pretrained(nlp_model, self.NLP_MODEL_DIR)
+
+            nlp_model.eval()
+
+            self.nlp_model = nlp_model
+
+        self.nlp_model.eval()
 
     def initialize_cnn(self) ->None:
         model = AutoModelForImageClassification.from_pretrained(self.CNN_MODEL_DIR)
@@ -77,7 +108,7 @@ class MODEL:
         for path in image_paths:
             image = Image.open(os.path.join(images_dir, path))
             try:
-                inputs = self.cnn_feature_extractor(images=image, return_tensors="pt")
+                inputs = self.cnn_feature_extractor(images=image, return_tensors="pt", height =" 344", width = "344")
                 outputs = self.cnn_model(**inputs)
                 logits = outputs.logits
                 predicted_label = logits.argmax(-1).item()
@@ -118,7 +149,7 @@ class MODEL:
         list_text = []
         if len(values_for_unknown_label) > 0:
             for entry in values_for_unknown_label:
-                path = list(entry.values())[0] #filrs element of every entry which is a one key:value pair dictionary
+                path = list(entry.values())[0]
                 print(path)
                 text_from_image = extract_text_from_images([path])
                 print(text_from_image)

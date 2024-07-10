@@ -44,28 +44,3 @@ def extract_text_from_images(image_paths):
                 extracted_text.append('')  # Add an empty string for failed OCR attempts
 
     return extracted_text
-
-'''
-# This part of code is only 
-input_dir = r"C:\Users\olekm\OneDrive\Pulpit\ICFraud_github\ITSquad-antyfraud\CNN\dataset\train\paszportObcy"
-
-if os.path.exists(input_dir):
-    image_paths = [os.path.join(input_dir, filename) for filename in os.listdir(input_dir)]
-else:
-    print("Provided path is incorrect")
-    image_paths = []
-
-texts = []
-
-for image_path in image_paths:
-    text = extract_text_from_images([image_path])  # Pass as a list
-    if isinstance(text, list):
-        text = "\n".join(text)
-    texts.append(text)
-
-print(texts)
-
-with open("file.txt", "w", encoding='UTF-8') as file:
-    to_write = "\n".join(texts)
-    file.write(to_write)
-'''
