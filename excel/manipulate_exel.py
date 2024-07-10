@@ -2,7 +2,7 @@ import pandas as pd
 from openpyxl import load_workbook
 
 # Load the Excel file
-input_file = 'pron_gya.xlsx'
+input_file = "E:\\Projekty\\for_work\\ai-solution\\ITSquad-antyfraud\\excel\\dane-party-incident-user.xlsx"
 wb = load_workbook(filename=input_file, data_only=True)
 sheet = wb['MOCK_DATA']
 
@@ -39,7 +39,7 @@ for row_index in row_indices:
 new_df = pd.DataFrame(new_data)
 
 # Save the DataFrame to a new Excel file
-output_file = 'output_test.xlsx'
+output_file = 'output_party.xlsx'
 new_df.to_excel(output_file, sheet_name='NewSheet', index=False)
 
 print(f"Data has been successfully transformed and saved to {output_file}")

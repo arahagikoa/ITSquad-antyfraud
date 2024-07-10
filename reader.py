@@ -67,6 +67,8 @@ class Reader:
 
             values_str = ', '.join(values_list)
             sql_statement = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES {values_str};"
+            with open(f"./{file_path}_query.txt", "w", encoding='utf-8') as f:
+                f.write(sql_statement)
             return sql_statement
         except FileNotFoundError:
             print(f"File not found: {file_path}")
