@@ -106,9 +106,9 @@ class MODEL:
         document_labels = []
 
         for path in image_paths:
-            image = Image.open(os.path.join(images_dir, path))
+            image = Image.open(os.path.join(images_dir, path)).convert('RGB')
             try:
-                inputs = self.cnn_feature_extractor(images=image, return_tensors="pt", height =" 344", width = "344")
+                inputs = self.cnn_feature_extractor(images=image, return_tensors="pt", size={"height": 224, "width": 224})
                 outputs = self.cnn_model(**inputs)
                 logits = outputs.logits
                 predicted_label = logits.argmax(-1).item()
@@ -147,22 +147,27 @@ class MODEL:
 
         nlp_dictionary = []
         list_text = []
+        label_mapping = {0: 'notatka_policyjna', 1: 'Oswiadczenie_kolizyjne', 2: 'ekspertyza_likwidatora', 3: 'Nieznany'}
+
         if len(values_for_unknown_label) > 0:
             for entry in values_for_unknown_label:
                 path = list(entry.values())[0]
-                print(path)
+                #print(path)
                 text_from_image = extract_text_from_images([path])
-                print(text_from_image)
+                #print(text_from_image)
                 predicted_class = self.predict_sentiment(text_from_image)
                 list_text.append((text_from_image, predicted_class))
-                print(predicted_class)
+                #print(predicted_class)
                 nlp_dictionary.append({
-                    predicted_class:path
+                    label_mapping[predicted_class]:path
                 })
 
 
             self.list_text_class = list_text
             document_labels.append(nlp_dictionary)
+
+            document_labels.extend(nlp_dictionary)
+
             return document_labels
 
         else:
