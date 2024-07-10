@@ -138,7 +138,7 @@ class MODEL:
 
         return predicted_class_id
 
-    def nlp_model_function(self, images_dir):
+    def nlp_model_function(self, images_dir)->list:
         document_labels = self.cnn_model_function(images_dir)
         print(document_labels)
         
