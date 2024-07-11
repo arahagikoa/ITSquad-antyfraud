@@ -67,7 +67,7 @@ mng = Manager()
 
 #csv_file = "./pron_gya_csv.csv"
 
-csv_file = "E:\\Projekty\\for_work\\ai-solution\\ITSquad-antyfraud\\excel\\final.csv"
+csv_file = r"E:\Projekty\for_work\ai-solution\ITSquad-antyfraud\excel\incident-attribute-extension-csv.csv"
 
 
 user_columns = ['user_id', 'username', 'firstname', 'lastname', 'email', 'password', 'user_role_id']
@@ -80,16 +80,32 @@ party_extension_mapping_columns = ['party_extension_id', 'active_flag']
 user_role_columns = ['user_role_id', 'user_role']
 incident_status_columns = ['incydent_status_id', 'status_description']
 
-asset_name_columns = ['name_asset']
-asset_attribute_columns = ['asset_id_attribute', 'system_asset_extension_id', 'asset_attribute_value']
-system_asset_extension_columns = ['system_asset_extension_name']
 
+
+asset_name_columns = ['asset_id', 'name_asset']
+asset_attribute_columns = ['asset_id_attribute', 'system_asset_extension_id', 'asset_attribute_value', 'asset_attribute_id']
+system_asset_extension_columns = ['system_asset_extension_name', 'system_asset_extension_id']
+location_columns = ['id', 'latitude', 'longitude', 'country', 'city', 'zip_code', 'street_name_prefix', 'street_name', 'building_number', 'apartment_number']
+
+
+
+system_incident_extension_columns = ['system_incident_extension_id', 'name', 'active_flag']
+incident_attribute_columns = ['id_attribute', 'incident_id', 'value', 'system_incident_extension_id']
 
 reader = Reader(csv_file)
+
+reader.read_file_and_save("./txt_data_to_db/incident_attribute.txt", incident_attribute_columns)
+reader.read_file_and_save("./txt_data_to_db/system_incident_extension.txt", system_incident_extension_columns)
+
+#reader.read_file_and_save("./txt_data_to_db/asset.txt", asset_name_columns)
+#reader.read_file_and_save("./txt_data_to_db/asset_attribute.txt", asset_attribute_columns)
+#reader.read_file_and_save("./txt_data_to_db/system_asset_extension.txt", system_asset_extension_columns)
+
+
 #reader.read_file_and_save("./txt_data_to_db/user_role.txt", user_role_columns)
 #reader.read_file_and_save("./txt_data_to_db/user_.txt", user_columns)
 #reader.read_file_and_save("./txt_data_to_db/incident.txt", incident_columns)
-reader.read_file_and_save("./txt_data_to_db/incident_status.txt", incident_status_columns)
+#reader.read_file_and_save("./txt_data_to_db/incident_status.txt", incident_status_columns)
 #reader.read_file_and_save("./txt_data_to_db/party.txt", party_columns)
 #reader.read_file_and_save("./txt_data_to_db/party_attribute.txt", party_attribute_columns)
 #reader.read_file_and_save("./txt_data_to_db/party_extension.txt", party_extension_columns)
@@ -109,20 +125,20 @@ reader.read_file_and_save("./asset.txt", asset_name_columns)
 reader.read_file_and_save("./asset_attribute.txt", asset_attribute_columns)
 reader.read_file_and_save("./system_asset_extension.txt", system_asset_extension_columns)
 '''
-query_file = "./query_file.txt"
+#query_file = "./query_file.txt"
 
 #user_role_query = reader.create_batch_insert_statement("./txt_data_to_db/user_role.txt", 'user_role', user_role_columns)
 #user_query = reader.create_batch_insert_statement("./txt_data_to_db/user_.txt", 'user_', user_columns)
 #incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident.txt", 'incident', incident_columns)
-incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_status.txt", 'incident', incident_status_columns)
+#incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_status.txt", 'incident', incident_status_columns)
 #incident_history_query = reader.create_batch_insert_statement("./incident_history.txt", 'incident_history', incident_history_columns)
 #party_query = reader.create_batch_insert_statement("./txt_data_to_db/party.txt", 'party', party_columns)
 #party_attribute_query = reader.create_batch_insert_statement("./txt_data_to_db/party_attribute.txt", 'party_attribute', party_attribute_columns)
 #party_extension_query = reader.create_batch_insert_statement("./txt_data_to_db/party_extension.txt", 'party_extension', party_extension_columns)
 #party_extension_mapping_query = reader.create_batch_insert_statement("./txt_data_to_db/party_extension_mapping.txt", 'party_extension_mapping', party_extension_mapping_columns)
 
-
-
+incident_attribute_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_attribute.txt", 'incident_attribute', incident_attribute_columns)
+system_incident_extension_query = reader.create_batch_insert_statement("./txt_data_to_db/system_incident_extension.txt", 'system_incident_extension', system_incident_extension_columns)
 #print(party_query)
 
 #print(user_query)
@@ -134,9 +150,9 @@ incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident
 #print(party_extension_mapping_query)
 
 
-#asset_query = reader.create_batch_insert_statement("./asset.txt", "asset", asset_name_columns)
-#asset_attribute_query =reader.create_batch_insert_statement("./asset_attribute.txt", "asset_attribute", asset_attribute_columns)
-#system_asset_extension_query =reader.create_batch_insert_statement("./system_asset_extension.txt", "system_asset_extension", system_asset_extension_columns)
+#asset_query = reader.create_batch_insert_statement("./txt_data_to_db/asset.txt", "asset", asset_name_columns)
+#asset_attribute_query =reader.create_batch_insert_statement("./txt_data_to_db/asset_attribute.txt", "asset_attribute", asset_attribute_columns)
+#system_asset_extension_query =reader.create_batch_insert_statement("./txt_data_to_db/system_asset_extension.txt", "system_asset_extension", system_asset_extension_columns)
 
 '''
 with open(query_file, 'w') as f:
