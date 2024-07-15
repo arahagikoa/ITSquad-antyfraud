@@ -67,7 +67,7 @@ mng = Manager()
 
 #csv_file = "./pron_gya_csv.csv"
 
-csv_file = r"E:\Projekty\for_work\ai-solution\ITSquad-antyfraud\excel\incident-attribute-extension-csv.csv"
+csv_file = r"E:\Projekty\for_work\ai-solution\ITSquad-antyfraud\excel\relation-party-incident.csv"
 
 
 user_columns = ['user_id', 'username', 'firstname', 'lastname', 'email', 'password', 'user_role_id']
@@ -92,10 +92,21 @@ location_columns = ['id', 'latitude', 'longitude', 'country', 'city', 'zip_code'
 system_incident_extension_columns = ['system_incident_extension_id', 'name', 'active_flag']
 incident_attribute_columns = ['id_attribute', 'incident_id', 'value', 'system_incident_extension_id']
 
+system_asset_category = ['id', 'name']
+relation_incident_asset = ['relation_id', 'incident_id', 'asset_id', 'id']
+
+party_role = ['party_role_id', 'party_role_name']
+relation_incident_party = ['id', 'incident_id', 'party_id', 'party_role_id']
 reader = Reader(csv_file)
 
-reader.read_file_and_save("./txt_data_to_db/incident_attribute.txt", incident_attribute_columns)
-reader.read_file_and_save("./txt_data_to_db/system_incident_extension.txt", system_incident_extension_columns)
+
+reader.read_file_and_save("./txt_data_to_db/party_role.txt", party_role)
+reader.read_file_and_save("./txt_data_to_db/relation_incident_party.txt", relation_incident_party)
+
+#reader.read_file_and_save("./txt_data_to_db/system_asset_category.txt", system_asset_category)
+#reader.read_file_and_save("./txt_data_to_db/relation_incident_asset.txt", relation_incident_asset)
+#reader.read_file_and_save("./txt_data_to_db/incident_attribute.txt", incident_attribute_columns)
+#reader.read_file_and_save("./txt_data_to_db/system_incident_extension.txt", system_incident_extension_columns)
 
 #reader.read_file_and_save("./txt_data_to_db/asset.txt", asset_name_columns)
 #reader.read_file_and_save("./txt_data_to_db/asset_attribute.txt", asset_attribute_columns)
@@ -127,6 +138,11 @@ reader.read_file_and_save("./system_asset_extension.txt", system_asset_extension
 '''
 #query_file = "./query_file.txt"
 
+
+party_query = reader.create_batch_insert_statement("./txt_data_to_db/party_role.txt", 'party', party_role)
+party_query = reader.create_batch_insert_statement("./txt_data_to_db/relation_incident_party.txt", 'party', relation_incident_party)
+
+
 #user_role_query = reader.create_batch_insert_statement("./txt_data_to_db/user_role.txt", 'user_role', user_role_columns)
 #user_query = reader.create_batch_insert_statement("./txt_data_to_db/user_.txt", 'user_', user_columns)
 #incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident.txt", 'incident', incident_columns)
@@ -137,8 +153,10 @@ reader.read_file_and_save("./system_asset_extension.txt", system_asset_extension
 #party_extension_query = reader.create_batch_insert_statement("./txt_data_to_db/party_extension.txt", 'party_extension', party_extension_columns)
 #party_extension_mapping_query = reader.create_batch_insert_statement("./txt_data_to_db/party_extension_mapping.txt", 'party_extension_mapping', party_extension_mapping_columns)
 
-incident_attribute_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_attribute.txt", 'incident_attribute', incident_attribute_columns)
-system_incident_extension_query = reader.create_batch_insert_statement("./txt_data_to_db/system_incident_extension.txt", 'system_incident_extension', system_incident_extension_columns)
+#incident_attribute_query = reader.create_batch_insert_statement("./txt_data_to_db/system_asset_category.txt", 'system_asset_category', system_asset_category)
+#incident_attribute_query = reader.create_batch_insert_statement("./txt_data_to_db/relation_incident_asset.txt", 'relation_incident_asset', relation_incident_asset)
+#incident_attribute_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_attribute.txt", 'incident_attribute', incident_attribute_columns)
+#system_incident_extension_query = reader.create_batch_insert_statement("./txt_data_to_db/system_incident_extension.txt", 'system_incident_extension', system_incident_extension_columns)
 #print(party_query)
 
 #print(user_query)
