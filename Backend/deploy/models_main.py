@@ -34,7 +34,7 @@ class MODEL:
 
     def initialize_nlp(self)->None:
         if os.name =='nt':
-            local_path = r"C:\Users\olekm\OneDrive\Pulpit\ICFraud_github\ITSquad-antyfraud\NLP\Training_model\saved_model"
+            local_path = r"C:\Users\olekm\OneDrive\Pulpit\ICFraud_github\ITSquad-antyfraud\Backend\saved_model"
 
             peft_config = PeftConfig.from_pretrained(local_path)
 
@@ -140,10 +140,10 @@ class MODEL:
 
     def nlp_model_function(self, images_dir)->list:
         document_labels = self.cnn_model_function(images_dir)
-        print(document_labels)
+        #print(document_labels)
         
         values_for_unknown_label = [entry for entry in document_labels if 'inne' in entry]
-        print(values_for_unknown_label)
+        #print(values_for_unknown_label)
 
         nlp_dictionary = []
         list_text = []
@@ -162,16 +162,18 @@ class MODEL:
                     label_mapping[predicted_class]:path
                 })
 
+            document_labels_new = [entry for entry in document_labels if 'inne' not in entry]
 
-            self.list_text_class = list_text
-            document_labels.append(nlp_dictionary)
+            for item in nlp_dictionary:
+                document_labels_new.append(item)
 
-            document_labels.extend(nlp_dictionary)
+            self.list_text_class = document_labels_new
 
-            return document_labels
+            return document_labels_new
 
         else:
             return document_labels
+        
     def get_docs_text_labels(self)->list:
         if self.list_text_class is not None:
             return self.list_text_class
