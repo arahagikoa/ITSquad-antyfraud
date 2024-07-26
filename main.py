@@ -67,13 +67,13 @@ mng = Manager()
 
 #csv_file = "./pron_gya_csv.csv"
 
-csv_file = r"E:\Projekty\for_work\ai-solution\ITSquad-antyfraud\excel\relation-party-incident.csv"
-
+#csv_file = r"E:\Projekty\for_work\db-data\ITSquad-antyfraud\excel\final.csv"
+csv_file = r"E:\Projekty\for_work\db-data\ITSquad-antyfraud\excel\location.csv"
 
 user_columns = ['user_id', 'username', 'firstname', 'lastname', 'email', 'password', 'user_role_id']
-incident_columns = ['incident_id', 'incident_number', 'incydent_type', 'occurance_date', 'submission_date', 'incydent_status_id', 'user_id', 'last_modified']
+incident_columns = ['incident_id', 'incident_number', 'occurance_date', 'submission_date', 'incydent_status_id', 'user_id', 'last_modified']
 incident_history_columns = ['id', 'action', 'object_id', 'incident_id']
-party_columns = ['party_id', 'first_name_party', 'middle_name_party', 'surname_party', 'tax_id','adress_party', 'phone_number_party', 'email_party']
+party_columns = ['party_id', 'first_name_party',  'surname_party']
 party_attribute_columns = ['id_attribute', 'value', 'party_id_attribute', 'party_extension_id']
 party_extension_columns =['id_extension', 'name']
 party_extension_mapping_columns = ['party_extension_id', 'active_flag']
@@ -87,6 +87,8 @@ asset_attribute_columns = ['asset_id_attribute', 'system_asset_extension_id', 'a
 system_asset_extension_columns = ['system_asset_extension_name', 'system_asset_extension_id']
 location_columns = ['id', 'latitude', 'longitude', 'country', 'city', 'zip_code', 'street_name_prefix', 'street_name', 'building_number', 'apartment_number']
 
+incident_type = ['incident_type_id', 'incydent_type']
+incident_score = ['incident_id', 'total_score', 'model_score', 'rules_score', 'sna_score']
 
 
 system_incident_extension_columns = ['system_incident_extension_id', 'name', 'active_flag']
@@ -97,16 +99,25 @@ relation_incident_asset = ['relation_id', 'incident_id', 'asset_id', 'id']
 
 party_role = ['party_role_id', 'party_role_name']
 relation_incident_party = ['id', 'incident_id', 'party_id', 'party_role_id']
+location = ['id', 'latitude', 'longitude', 'country', 'city', 'zip_code', 'street_name_prefix', 'street_name', 'building_number', 'apartment_number']
+
 reader = Reader(csv_file)
 
 
-reader.read_file_and_save("./txt_data_to_db/party_role.txt", party_role)
-reader.read_file_and_save("./txt_data_to_db/relation_incident_party.txt", relation_incident_party)
+#reader.read_file_and_save("./txt_data_to_db/party_role.txt", party_role)
+#reader.read_file_and_save("./txt_data_to_db/relation_incident_party.txt", relation_incident_party)
 
 #reader.read_file_and_save("./txt_data_to_db/system_asset_category.txt", system_asset_category)
 #reader.read_file_and_save("./txt_data_to_db/relation_incident_asset.txt", relation_incident_asset)
 #reader.read_file_and_save("./txt_data_to_db/incident_attribute.txt", incident_attribute_columns)
 #reader.read_file_and_save("./txt_data_to_db/system_incident_extension.txt", system_incident_extension_columns)
+
+
+#reader.read_file_and_save("./txt_data_to_db/incident_type.txt", incident_type)
+#reader.read_file_and_save("./txt_data_to_db/incident_score.txt", incident_score)
+
+reader.read_file_and_save("./txt_data_to_db/location.txt", location)
+
 
 #reader.read_file_and_save("./txt_data_to_db/asset.txt", asset_name_columns)
 #reader.read_file_and_save("./txt_data_to_db/asset_attribute.txt", asset_attribute_columns)
@@ -115,9 +126,9 @@ reader.read_file_and_save("./txt_data_to_db/relation_incident_party.txt", relati
 
 #reader.read_file_and_save("./txt_data_to_db/user_role.txt", user_role_columns)
 #reader.read_file_and_save("./txt_data_to_db/user_.txt", user_columns)
-#reader.read_file_and_save("./txt_data_to_db/incident.txt", incident_columns)
+#reader.read_file_and_save("./txt_data_to_db/incident_.txt", incident_columns)
 #reader.read_file_and_save("./txt_data_to_db/incident_status.txt", incident_status_columns)
-#reader.read_file_and_save("./txt_data_to_db/party.txt", party_columns)
+#reader.read_file_and_save("./txt_data_to_db/party_new.txt", party_columns)
 #reader.read_file_and_save("./txt_data_to_db/party_attribute.txt", party_attribute_columns)
 #reader.read_file_and_save("./txt_data_to_db/party_extension.txt", party_extension_columns)
 #reader.read_file_and_save("./txt_data_to_db/party_extension_mapping.txt", party_extension_mapping_columns)
@@ -139,16 +150,19 @@ reader.read_file_and_save("./system_asset_extension.txt", system_asset_extension
 #query_file = "./query_file.txt"
 
 
-party_query = reader.create_batch_insert_statement("./txt_data_to_db/party_role.txt", 'party', party_role)
-party_query = reader.create_batch_insert_statement("./txt_data_to_db/relation_incident_party.txt", 'party', relation_incident_party)
+#party_query = reader.create_batch_insert_statement("./txt_data_to_db/party_role.txt", 'party', party_role)
+#party_query = reader.create_batch_insert_statement("./txt_data_to_db/relation_incident_party.txt", 'party', relation_incident_party)
 
+location_query = reader.create_batch_insert_statement("./txt_data_to_db/location.txt", 'location', location)
 
+#incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_type.txt", 'incident_type', incident_type)
+#incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_score.txt", 'incident_score', incident_score)
 #user_role_query = reader.create_batch_insert_statement("./txt_data_to_db/user_role.txt", 'user_role', user_role_columns)
 #user_query = reader.create_batch_insert_statement("./txt_data_to_db/user_.txt", 'user_', user_columns)
-#incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident.txt", 'incident', incident_columns)
+#incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_.txt", 'incident', incident_columns)
 #incident_query = reader.create_batch_insert_statement("./txt_data_to_db/incident_status.txt", 'incident', incident_status_columns)
 #incident_history_query = reader.create_batch_insert_statement("./incident_history.txt", 'incident_history', incident_history_columns)
-#party_query = reader.create_batch_insert_statement("./txt_data_to_db/party.txt", 'party', party_columns)
+#party_query = reader.create_batch_insert_statement("./txt_data_to_db/party_new.txt", 'party', party_columns)
 #party_attribute_query = reader.create_batch_insert_statement("./txt_data_to_db/party_attribute.txt", 'party_attribute', party_attribute_columns)
 #party_extension_query = reader.create_batch_insert_statement("./txt_data_to_db/party_extension.txt", 'party_extension', party_extension_columns)
 #party_extension_mapping_query = reader.create_batch_insert_statement("./txt_data_to_db/party_extension_mapping.txt", 'party_extension_mapping', party_extension_mapping_columns)
