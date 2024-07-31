@@ -4,7 +4,7 @@ import os
 
 client = AzureOpenAI(
   azure_endpoint = "https://congo-republic.openai.azure.com/",
-  api_key="4db9", 
+  api_key="dsgsadgsd", 
   api_version="2023-12-01-preview"
 )
 

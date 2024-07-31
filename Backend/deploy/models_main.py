@@ -8,7 +8,8 @@ import matplotlib.image as mpimg
 from PIL import Image
 from pdf_ocr import extract_text_from_images
 from peft import PeftModel, PeftConfig
-
+import predict
+import image_ocr3
 
 
 
@@ -117,6 +118,41 @@ class MODEL:
                 predicted_class_name = label_mapping[predicted_label]
 
                 document_labels.append({predicted_class_name: path})
+
+                ocr_dir = "./data_extraction"
+
+                for json_obj in document_labels:
+                    for key, value in json_obj.items():
+                        if key == "idObcy" or key == "id":
+
+                            if not os.path.exists(ocr_dir):
+                                os.makedirs(ocr_dir)
+
+                            image = Image.open(value)
+                            
+                            img_save_path = os.path.join(ocr_dir, os.path.basename(value))
+                            image.save(img_save_path)
+
+                predict.main(ocr_dir)
+
+                #perform OCR
+                cnn_dir = "./cnn_output"
+                ocr_images = os.listdir(cnn_dir)
+                for image in ocr_images:
+                    image_path = os.path.join(cnn_dir, image)
+                    image_ocr3.preprocess_image_for_ocr(image_path, "./preprocessed_images")
+                
+                list_with_data = image_ocr3.perform_ocr_on_preprocessed_images("./preprocessed_images")
+                print(list_with_data)
+                document_labels.append(list_with_data)
+
+                for img in os.listdir(ocr_dir):
+                    img_path = os.path.join(ocr_dir, img)
+                    if os.path.isfile(img_path):
+                        os.remove(img_path)
+
+                os.rmdir(ocr_dir)
+
             
             except Exception as e:
                 print(f"Error processing {path}: {e}")
