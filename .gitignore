@@ -1,1 +1,4 @@
-.env
+/CNN
+/Backend/CNN_MODEL
+/Backend/new_model_ICF_NLP
+/Backend/deploy/model_offload
