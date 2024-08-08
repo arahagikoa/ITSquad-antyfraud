@@ -1,0 +1,23 @@
+INSERT INTO asset_attribute (id, asset_id, system_asset_extension_id, value)
+VALUES 
+('{{attr_id_1}}', '{{asset_id}}', 'a06b98fd-c557-41a4-bb42-9a51e7e63640', '"{{asset_id}}"'),
+('{{attr_id_2}}', '{{asset_id}}', '18a68186-6d61-4d29-9c36-564582bc0190', '"{{asset_id}}"'),
+('{{attr_id_3}}', '{{asset_id}}', '62cf6a6b-a310-488a-9379-6901dc48edbe', '"114774"'),
+('{{attr_id_4}}', '{{asset_id}}', 'eb61c119-6f94-4500-8f48-2f113293f9a0', '"OC"'),
+('{{attr_id_5}}', '{{asset_id}}', 'a4225613-06ac-4fe0-88e8-eb28222400a4', '"2019-05-14T18:43:40+02:00"'),
+('{{attr_id_6}}', '{{asset_id}}', '8baf83a0-6239-4dd0-af1c-ee3edd0e0b7e', '"2020-05-05T08:30:47+02:00"'),
+('{{attr_id_7}}', '{{asset_id}}', 'cf67a2a8-c801-4e61-a909-325ab63a1a9a', '{"amount": 897, "currency": "PLN"}'),
+('{{attr_id_8}}', '{{asset_id}}', 'b960f2a4-caab-454b-89b5-dd4d06f13557', '"Smart Casco, Assistance, OC"'),
+('{{attr_id_9}}', '{{asset_id}}', 'eeb7e11e-5160-49ef-aa99-b9316bd95151', '{"amount": 162, "currency": "PLN"}'),
+('{{attr_id_10}}', '{{asset_id}}', '8beb1a63-a344-4a08-aac2-7f58e058686a', '"2020-04-13T19:44:53+02:00"'),
+('{{attr_id_11}}', '{{asset_id}}', '46475461-80ff-4fe6-985d-1a0004bf1010', '{"id": 1, "name": "new"}'),
+('{{attr_id_12}}', '{{asset_id}}', 'c9d5ee2b-1b5d-4ee7-a776-d791dbc79419', '{"id": 3, "name": "Internet"}'),
+('{{attr_id_13}}', '{{asset_id}}', 'e234dc3d-3383-4265-b43d-3cc4394862d1', '{"id": 1, "name": "LINK4"}'),
+('{{attr_id_14}}', '{{asset_id}}', '458955cb-159c-4bbd-9b93-3ad761704bd9', '{"id": 15, "firstName": "Joachim", "lastName": "Michalak", "phoneNumber": "0048(65)9750982", "lossRatio": 181}'),
+('{{attr_id_15}}', '{{asset_id}}', '6a08c53b-41f5-4aa0-965c-c4d83d4610a0', '{"239": {"id": 239, "participantId": 119, "firstName": "", "lastName": "", "address": "Skargi Piotra 38/54, 89-840 Bytom", "phoneNumber": "+48 84 021 97 51", "nationalIdNumber": {"NIP": "6230064170", "PESEL": "40012411175"}, "email": "milosz.sikorski@wp.pl", "extendingAttribute": [], "type": {"id": 2, "name": "Insured"}}, "240": {"id": 240, "participantId": 270, "firstName": null, "lastName": null, "address": "Królewska 46A, 71-161 Lędziny", "phoneNumber": "0048 274 347 157", "nationalIdNumber": {"NIP": "8965841176", "PESEL": "65121852235"}, "email": "dominika.kozlowska@wp.pl", "extendingAttribute": [], "type": {"id": 3, "name": "Policy Holder"}}}'),
+('{{attr_id_16}}', '{{asset_id}}', '2e58dd5c-ae8a-4680-9596-fde38f9ee732', '{"id": 2, "name": "partlyPaidPolicy"}'),
+('{{attr_id_17}}', '{{asset_id}}', '0b751d24-5db3-4358-ad3e-ee0eb1e87f00', '{"id": 2, "name": "singlePayment"}'),
+('{{attr_id_18}}', '{{asset_id}}', 'af1d12fb-2d22-44dd-ab71-e9dfe92f5e4f', 'true'),
+('{{attr_id_19}}', '{{asset_id}}', '97fa82b1-791f-48ea-a412-773f79da011b', '1'),
+('{{attr_id_20}}', '{{asset_id}}', '06295de8-6d5c-41b8-9cc3-20ddd955609f', '{"amount": 2240803, "currency": "PLN"}'),
+('{{attr_id_21}}', '{{asset_id}}', 'a0ac7569-88e8-452b-9161-2fc4f09ea9d9', '{"groupInsurance": 0}');

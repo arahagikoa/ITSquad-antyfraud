@@ -1,0 +1,49 @@
+
+INSERT INTO system_asset_extension (id, name)
+VALUES 
+('a06b98fd-c557-41a4-bb42-9a51e7e63640', 'id'),
+('18a68186-6d61-4d29-9c36-564582bc0190', 'policyId'),
+('62cf6a6b-a310-488a-9379-6901dc48edbe', 'number'),
+('eb61c119-6f94-4500-8f48-2f113293f9a0', 'product'),
+('a4225613-06ac-4fe0-88e8-eb28222400a4', 'startDate'),
+('8baf83a0-6239-4dd0-af1c-ee3edd0e0b7e', 'endDate'),
+('cf67a2a8-c801-4e61-a909-325ab63a1a9a', 'premium'),
+('b960f2a4-caab-454b-89b5-dd4d06f13557', 'insuranceCoverage'),
+('eeb7e11e-5160-49ef-aa99-b9316bd95151', 'insuranceSum'),
+('8beb1a63-a344-4a08-aac2-7f58e058686a', 'submissionDate'),
+('46475461-80ff-4fe6-985d-1a0004bf1010', 'type'),
+('c9d5ee2b-1b5d-4ee7-a776-d791dbc79419', 'submissionChannelType'),
+('e234dc3d-3383-4265-b43d-3cc4394862d1', 'insurerType'),
+('458955cb-159c-4bbd-9b93-3ad761704bd9', 'agent'),
+('6a08c53b-41f5-4aa0-965c-c4d83d4610a0', 'participants'),
+('2e58dd5c-ae8a-4680-9596-fde38f9ee732', 'paymentStatus'),
+('0b751d24-5db3-4358-ad3e-ee0eb1e87f00', 'paymentType'),
+('af1d12fb-2d22-44dd-ab71-e9dfe92f5e4f', 'debtCollection'),
+('97fa82b1-791f-48ea-a412-773f79da011b', 'damagesNumber'),
+('06295de8-6d5c-41b8-9cc3-20ddd955609f', 'insurancePayments'),
+('a0ac7569-88e8-452b-9161-2fc4f09ea9d9', 'extendingAttribute');
+
+
+INSERT INTO asset_attribute (id, asset_id, system_asset_extension_id, value)
+VALUES 
+('64db0f48-7d72-481d-ae62-17b5b37cd50b', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'a06b98fd-c557-41a4-bb42-9a51e7e63640', '"d4ba52a6-b472-4db6-938a-1b49862b4e74"'),
+('fbf82cd9-4bfb-4fab-92ce-b5bed1c050b9', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '18a68186-6d61-4d29-9c36-564582bc0190', '"d4ba52a6-b472-4db6-938a-1b49862b4e74"'),
+('66086e12-38a7-44cd-83c3-c9648e8feea6', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '62cf6a6b-a310-488a-9379-6901dc48edbe', '"114774"'),
+('f17ee951-cb9c-41f4-9b60-f43601f3d058', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'eb61c119-6f94-4500-8f48-2f113293f9a0', '"OC"'),
+('c1a971a1-614d-410d-bb75-227274510d6a', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'a4225613-06ac-4fe0-88e8-eb28222400a4', '"2019-05-14T18:43:40+02:00"'),
+('728e6774-410e-4422-8b89-b725bdf09ea4', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '8baf83a0-6239-4dd0-af1c-ee3edd0e0b7e', '"2020-05-05T08:30:47+02:00"'),
+('3d294659-9172-40a8-ab73-31d0916a6585', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'cf67a2a8-c801-4e61-a909-325ab63a1a9a', '{"amount": 897, "currency": "PLN"}'),
+('5355db2c-0f37-4321-83a5-b9614fa7481b', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'b960f2a4-caab-454b-89b5-dd4d06f13557', '"Smart Casco, Assistance, OC"'),
+('3fec537c-8e28-4298-9ac1-2d45a43f950f', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'eeb7e11e-5160-49ef-aa99-b9316bd95151', '{"amount": 162, "currency": "PLN"}'),
+('6acd7b0c-860f-4021-bcb7-2af6935677ad', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '8beb1a63-a344-4a08-aac2-7f58e058686a', '"2020-04-13T19:44:53+02:00"'),
+('f357d653-aace-40de-ba6d-c4c07bcc4b63', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '46475461-80ff-4fe6-985d-1a0004bf1010', '{"id": 1, "name": "new"}'),
+('0c2eb2f5-0f19-4c02-806b-4b45e83e032d', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'c9d5ee2b-1b5d-4ee7-a776-d791dbc79419', '{"id": 3, "name": "Internet"}'),
+('cf1aa8eb-ee3b-4acf-8685-48f92ae4cf2b', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'e234dc3d-3383-4265-b43d-3cc4394862d1', '{"id": 1, "name": "LINK4"}'),
+('8bba53cf-933b-46da-af44-55f2631c6fa1', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '458955cb-159c-4bbd-9b93-3ad761704bd9', '{"id": 15, "firstName": "Joachim", "lastName": "Michalak", "phoneNumber": "0048(65)9750982", "lossRatio": 181}'),
+('d2ac17a4-57a9-49d3-8e21-cab4e527e816', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '6a08c53b-41f5-4aa0-965c-c4d83d4610a0', '{"239": {"id": 239, "participantId": 119, "firstName": "", "lastName": "", "address": "Skargi Piotra 38/54, 89-840 Bytom", "phoneNumber": "+48 84 021 97 51", "nationalIdNumber": {"NIP": "6230064170", "PESEL": "40012411175"}, "email": "milosz.sikorski@wp.pl", "extendingAttribute": [], "type": {"id": 2, "name": "Insured"}}, "240": {"id": 240, "participantId": 270, "firstName": null, "lastName": null, "address": "Królewska 46A, 71-161 Lędziny", "phoneNumber": "0048 274 347 157", "nationalIdNumber": {"NIP": "8965841176", "PESEL": "65121852235"}, "email": "dominika.kozlowska@wp.pl", "extendingAttribute": [], "type": {"id": 3, "name": "Policy Holder"}}}'),
+('0aef334d-b96f-4330-b7e9-21695226ccca', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '2e58dd5c-ae8a-4680-9596-fde38f9ee732', '{"id": 2, "name": "partlyPaidPolicy"}'),
+('15a07137-d6c9-4bf3-894a-4b33fea5d4ef', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '0b751d24-5db3-4358-ad3e-ee0eb1e87f00', '{"id": 2, "name": "singlePayment"}'),
+('0ec3f9b5-bb57-465d-b790-5c9593cfaf42', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'af1d12fb-2d22-44dd-ab71-e9dfe92f5e4f', 'true'),
+('171dab1b-6d86-46d6-a8d7-1129e82cba94', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '97fa82b1-791f-48ea-a412-773f79da011b', '1'),
+('1c94fb60-8a4e-4426-b52c-681f993e5ba2', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', '06295de8-6d5c-41b8-9cc3-20ddd955609f', '{"amount": 2240803, "currency": "PLN"}'),
+('45145796-93ff-4722-8cc5-e7e3ee5ae0a3', 'd4ba52a6-b472-4db6-938a-1b49862b4e74', 'a0ac7569-88e8-452b-9161-2fc4f09ea9d9', '{"groupInsurance": 0}');
